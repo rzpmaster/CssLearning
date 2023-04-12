@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        字体样式
+        font-family 字体
+        font-size   字体大小
+        font-weight 字体粗细
+        font-style  字体风格：斜体？
+        */
+
+        /* 可以设置多个字体，多个字体用 , 分开，浏览器会按顺序寻找字体 */
+        /* 多个单词的字体用' ' */
+        body {
+            font-family: 'Microsoft YaHei', Arial;
+            font-size: 16px;
+        }
+
+        /* 标题标签需要单独设置 */
+        h2 {
+            font-size: 20px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        em {
+            font-style: normal;
+        }
+
+        /* 
+        复合属性
+        font: (font-style) (font-weight) font-style(/line-height) font-family
+        */
+        .font {
+            font: italic bold 16px/20px 'Mircosoft YaHei'
+        }
+
+        .font2 {
+            font: 20px 'Mircosoft YaHei'
+        }
+    </style>
+</head>
+
+<body>
+    <h2>标题</h2>
+    <p>段落1</p>
+    <p class="bold">段落2</p>
+    <p class="italic">段落3</p>
+    <em>EM</em>
+    <div class="font">字体复合属性</div>
+    <div class="font2">字体复合属性</div>
+</body>
+
+</html>

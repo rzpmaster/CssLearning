@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        网页布局
+            标准流
+            浮动
+            定位
+
+        定位可以让某个元素自由的在一个盒子里移动，并且可以压住其他盒子
+        定位可以让某个元素在滚动时固定在某个地方，并且可以压住其他盒子
+
+        定位 = 定位模式 position + 边偏移 top bottom left right
+
+        position
+            static      静态(默认，无定位，相当于标准流)
+            relative    相对(相对于自己原来的位置)
+            absolute    绝对(相对于父元素的位置)
+            fixed       固定(相对于浏览器的可视窗口)
+            sticky      粘性(relative+fixed)(相对于浏览器的可视窗口)
+
+        叠放次序 z-Index
+            使用定位布局时，可能出现盒子重叠的情况，这时候用 z-Index 控制前后次序
+            数值越大，位置越靠上，如果一样，书写顺序后面的位置靠上
+            数字后面每单位
+            只有定位才有 z-Index 属性，浮动是没有的
+
+        绝对定位/固定定位 和 浮动类似：
+            行内元素定位，可以直接设置宽高
+            块元素定位，如果不给宽高，默认为内容的大小
+
+        绝对定位/固定定位 与 浮动的区别： 
+            多个浮动会同行排列，定位可以任意排列
+            浮动只会影响后边的标准流，标准流写在前面的话，浮动不会压住前面的元素
+            浮动只会压住盒子，但不会压住盒子里的文字或图片，定位会压住盒子以及内容
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            border: 1px solid blue;
+            background-color: transparent;
+            margin-top: 10px;
+        }
+
+        div {
+            background-color: pink;
+        }
+
+        .container div {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* 相对定位 */
+        /* 相对定位继续保留自己原有的位置，不脱标，后面的元素依旧是标准流 */
+        .container .box1 {
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }
+
+        /* 相对定位是给绝对定位当爹的*/
+
+        /* 绝对定位 */
+        /* 绝对定位不会保留自己的位置，脱标，位置比浮动还高  */
+
+        /* 如果没有父元素，或者有父元素但是父元素没有定位，则以浏览器(Document)为准对齐 */
+        .container .box2 {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+
+        /* 如果父元素有定位(任何定位都行)，则以父元素的位置为准 */
+        /* 如果父元素无定位，则以第一个有定位的祖元素的位置为准 */
+        .box3 {
+            position: relative;
+        }
+
+        .container .box4 {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+
+        /* 子绝父相：父元素一般需要保留位置，用相对定位，子元素浮动，用绝对定位，盖住父元素 */
+
+        /* 固定定位 */
+        /* 固定定位不会保留自己的位置，脱标，相当于特殊的绝对定位 */
+        /* 与父元素无关，不随着滚动条滚动移动 */
+        body {
+            height: 10000px;
+        }
+
+        .container .box5 {
+            position: fixed;
+            top: 500px;
+            right: 50px;
+        }
+
+        /* 粘性定位 */
+        /* 粘性定位继续保留自己原有的位置，不脱标 */
+        /* 兼容性差，效果一般用 js 做 */
+        .box6 {
+            position: sticky;
+            top: 10px;
+        }
+
+        /* 绝对定位盒子如何居中？ */
+        .container .box7 {
+            position: absolute;
+            left: 50%;
+            margin-left: -50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box1">box1</div>
+        <div></div>
+    </div>
+
+    <div class="container">
+        <div class="box2">box2</div>
+        <div></div>
+    </div>
+
+    <div class="container box3">
+        box3 relative
+        <div class="box4">box4</div>
+        <div></div>
+    </div>
+
+    <div class="container">
+        <div class="box5">box5</div>
+        <div></div>
+    </div>
+
+    <div class="container box6">
+        <div>box6</div>
+    </div>
+
+    <div class="container">
+        <div class="box7">box7</div>
+        <div></div>
+    </div>
+</body>
+
+</html>

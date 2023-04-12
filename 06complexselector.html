@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        选择器
+            基础选择器
+                标签选择器  div {}
+                类选择器    .class {}    
+                id选择器    #id {}
+                通配符选择器
+                    * {} 选择所有标签
+            组合选择器
+                后代选择器
+                子选择器
+                并集选择器
+                伪类选择器
+                    链接伪类 
+                        a:link      未被访问
+                        a:visited   已访问
+                        a:hover     鼠标hover
+                        a:acitve    鼠标按下未抬起
+
+                        注意：顺序不能改；a标签有默认样式，样式需要单独指定
+                    focus伪类
+                        :focus      光标元素
+
+        */
+
+        /* 后代选择器 */
+        ol li {
+            background-color: deeppink;
+        }
+
+        ol li a {
+            color: yellow;
+        }
+
+        .nav li a {
+            color: black;
+        }
+
+        /* 子选择器 */
+        .nav>a {
+            color: deeppink;
+        }
+
+        /* 并集选择器 */
+        div,
+        p,
+        .pig>li {
+            color: pink;
+        }
+
+        /* 伪类选择器 */
+    </style>
+</head>
+
+<body>
+    <!-- 后代选择器 -->
+    <ol>
+        <li>ol-li</li>
+        <li href="#"><a>aaa</a>ol-li</li>
+    </ol>
+    <a href="#">aaa</a>
+    <ul>
+        <li>ul-li</li>
+        <li>ul-li</li>
+    </ul>
+    <ol class="nav">
+        <li>ol-li</li>
+        <li href="#"><a>aaa</a>ol-li</li>
+    </ol>
+
+    <!-- 后代选择器：只要是后代都能选择到，不要求一定是子类 -->
+    <div class="nav">
+        <ol>
+            <li href="#">
+                <div><a>aaa</a></div>
+                <div>ol-li</div>
+            </li>
+        </ol>
+
+    </div>
+
+    <!-- 子选择器 -->
+    <div class="nav">
+        <a href="#">son</a>
+        <p><a href="#">grandson</a></p>
+    </div>
+
+    <!-- 并集选择器 -->
+    <div>cat</div>
+    <p>dog</p>
+    <span>tiger</span>
+    <ul class="pig">
+        <li>peiqi</li>
+        <li>peiqi-father</li>
+        <li>peiqi-mother</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        网页布局
+            标准流
+            浮动
+            定位
+        
+        浮动可以改变标签默认的排列方式
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            background-color: pink;
+        }
+
+        .box {
+            width: 500px;
+            height: 100px;
+            margin: 10px auto;
+            background-color: deeppink
+        }
+
+        /* 多个块级元素纵向排列用标准流，多个块级元素横向排列用浮动 */
+        /* 如果两个元素都是左浮动，它们会贴着 */
+        #float-container div {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        /* 浮动元素会脱离标准流，脱标后不再保留原来的位置 */
+        #stand {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        div span {
+            background-color: blue;
+        }
+
+        /* 浮动的元素 具有行内块元素的特性(可以直接设置宽高) */
+        #float1 {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
+
+        #float2 {
+            width: 100px;
+            height: 100px;
+            float: right;
+        }
+
+        /* 浮动元素经常和标准流一起使用，标准流作为浮动的父级元素 */
+        /* 如果一个盒子浮动了，他的兄弟元素也因该浮动 */
+
+        /* 如果第一个元素没有浮动，第二个浮动了，第一个元素会被覆盖吗？ */
+        #float-container2>div {
+            width: 100px;
+            height: 100px;
+            background-color: deeppink;
+        }
+
+        #float-container2>#float3 {
+            float: left;
+            background-color: blue
+        }
+
+        /* 
+        父盒子不给高度，子盒子浮动，会导致父盒子高度为0，此时需要清楚浮动
+        清楚浮动：将浮动的影响限制在父元素中
+            1.额外标签法（推荐）
+            2.父级标签添加 overflow
+            3.父级标签添加 after 伪元素
+            4.父级标签添加 双伪元素
+        */
+
+        .container {
+            border: 1px solid red;
+            margin: 10px auto;
+            background-color: transparent;
+        }
+
+        .box2 {
+            width: 600px;
+            margin: 10px auto;
+        }
+
+        .box2 p {
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: blue
+        }
+
+        /* 清楚浮动 额外标签法 */
+        .clear {
+            clear: both;
+        }
+
+        /* 清楚浮动 after 伪元素 */
+        /* 在父盒子后面，用css画了个新盒子 */
+        .clearfix:after {
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        /* 清楚浮动 双伪元素 */
+        .claerfix2:before,
+        .clearfix2:after {
+            content: "";
+            display: table;
+        }
+
+        .clearfix2:after {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div id="float-container">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <!-- stand 会顶上去 因为 float-container 脱标了 -->
+        <div id="stand">stand</div>
+    </div>
+
+    <div class="box">
+        <span id="float1">1</span>
+        <span id="float2">2</span>
+    </div>
+
+    <!-- 浮动只会影响后面的标准流，不会影响前面的标准流 -->
+    <div id="float-container2">
+        <div>1</div>
+        <div id="float3">2</div>
+        <div style="width: 200px;height: 200px;background-color: skyblue;">3</div>
+    </div>
+
+    <!-- 父盒子不给高度，子盒子浮动，会导致父盒子高度为0 -->
+    <div class="container">0
+        <div class="box2">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </div>
+        <div class="box"></div>
+    </div>
+
+    <!-- 清楚浮动 额外标签法 -->
+    <div class="container">1
+        <div class="box2">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+            <!-- 空标签必须是块级元素 -->
+            <!-- <div class="clear"></div> -->
+            <!-- <span class="clear"></span> -->
+            <br class="clear">
+        </div>
+        <div class="box"></div>
+    </div>
+
+    <!-- 清楚浮动 overflow -->
+    <div class="container">2
+        <!-- overflow -->
+        <div class="box2" style="overflow:hidden;">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </div>
+        <div class="box"></div>
+    </div>
+
+    <!-- 清楚浮动 after 伪元素 -->
+    <div class="container">3
+        <div class="box2 clearfix">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </div>
+        <div class="box"></div>
+    </div>
+
+    <!-- 清楚浮动 双伪元素 -->
+    <div class="container">4
+        <div class="box2 clearfix2">
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+        </div>
+        <div class="box"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        选择器
+            基础选择器
+                标签选择器  div {}
+                类选择器    .class {}    
+                id选择器    #id {}
+                通配符选择器
+                    * {} 选择所有标签
+            组合选择器
+        */
+
+        /* 会选择所有标签 */
+        p {
+            color: green;
+        }
+
+        /* 谁有类，谁被修改，最常用 */
+        /* 多个类 用空格隔开 */
+        .red {
+            color: red;
+        }
+
+        .font20 {
+            font-size: 20px;
+        }
+
+        /* 只有一个标签使用，经常和 js 配合使用 */
+        #blue {
+            color: blue;
+        }
+
+        /* 清楚所有标签的样式 */
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>有点意思</p>
+    <p>没意思</p>
+    <ul>
+        <li class="red font20">1</li>
+        <li class="red">2</li>
+        <li class="red">3</li>
+        <li class="font20">4</li>
+        <li id="blue">5</li>
+    </ul>
+    <div class="red">我是div 有red类</div>
+</body>
+
+</html>

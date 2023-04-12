@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        选择器权重
+
+        继承，*                0 0 0 0
+        元素选择器              0 0 0 1
+        类选择器，伪类选择器     0 0 1 0
+        id选择器                0 1 0 0
+        行内样式                1 0 0 0
+        !important              无穷大
+        */
+
+        /* 基础选择器 */
+        div {
+            color: blue !important;
+        }
+
+        .div {
+            color: red;
+        }
+
+        #div {
+            color: green;
+        }
+
+        /* 复合选择器 */
+        /* 0 0 0 1 + 0 0 0 1 */
+        ul li {
+            color: green;
+        }
+
+        /* 0 0 1 0 + 0 0 0 1 */
+        .nav li {
+            color: pink
+        }
+
+        /* 0 0 0 1 */
+        li {
+            color: red !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div" class="div">div</div>
+
+    <ul class="nav">
+        <li>content1</li>
+        <li>content2</li>
+        <li>content3</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        css3 新增选择器
+            属性选择器
+                权重    0 0 1 0
+            结构伪类选择器
+                first-child last-child nth-child
+                first-of-type last-of-type nth-of-type
+                权重    0 0 1 0
+            伪元素选择器
+                ::before ::after
+                在父盒子内部创建一个行内元素
+                权重    0 0 0 1
+
+        这些选择器的权重 和 类选择器，伪类选择器 一致，都是 0 0 1 0
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 10px;
+            border: 1px solid red;
+        }
+
+        input {
+            /* border: 0; */
+            outline: none;
+        }
+
+        /* --属性选择器 */
+
+        /* 必须是 input 同时拥有 value 这个 attribute */
+        input[value] {
+            color: pink;
+        }
+
+        /* 必须是 input 同时拥有 type 这个 attribute，并且 这个 attribute 的值为 text */
+        input[type="text"] {
+            color: pink;
+        }
+
+        /* ... class 值必须以 icon 开头 */
+        div[class^="icon"] {
+            color: pink;
+        }
+
+        /* ... class 值必须以 data 结尾 */
+        section[class$="data"] {
+            color: pink;
+        }
+
+        /* class 值必须包含 data */
+        /* section[class*="data"] {
+            color: pink;
+        } */
+
+        /* --结构伪类选择器 */
+
+        /* 选择第几个孩子 */
+        ul li:first-child,
+        ul li:last-child {
+            color: pink;
+        }
+
+        /* 
+            n       选择第 n 个
+            2n      选择偶数个，或者 even
+            2n+1    选择奇数个，或者 odd
+            5n      每5个选择一个 5 10 15
+            n+5     从第5个开始选择后面的（含第5个）
+            -n+5    选择前5个（含第5个）
+        */
+        ul li:nth-child(5) {
+            color: deeppink;
+        }
+
+        ul li:nth-child(2n+1) {
+            color: red;
+        }
+
+        ul li:nth-child(even) {
+            color: green;
+        }
+
+        /* 选择寄几个指定类型的孩子 */
+        section div:first-of-type,
+        section div:last-of-type {
+            color: pink;
+        }
+
+        /* !!!这个选择不到!!! */
+        /* 先看第几个孩子，然后看他是不是 div */
+        /* section div:nth-child(1) {
+            color: purple;
+        } */
+        /* 这个可以选择到 */
+        /* 在类型是div里面找第几个 */
+        section div:nth-of-type(1) {
+            color: red;
+        }
+
+        /* --伪元素选择器 */
+        /* 伪元素：用 css 模拟的标签元素，伪就伪在在文档流中找不到 */
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        /* 伪元素是行内元素，必须先转换才能设置大小 */
+        /* 
+        ::before 权重是 0 0 0 1
+        div      权重是 0 0 0 1
+        所以这个为元素选择器的权重是 0 0 0 2
+         */
+        .box::before {
+            display: inline-block;
+            content: 'before';
+            width: 50px;
+            height: 50px;
+            background-color: deeppink;
+        }
+
+        .box::after {
+            content: 'after';
+        }
+
+        /* 
+        伪元素的使用场景
+            可以做伪元素字体图标
+            可以做遮罩层
+            清楚浮动
+         */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" value="please key in user">
+        <input type="text">
+    </div>
+
+    <div class="container">
+        <input type="text">
+        <input type="password">
+    </div>
+
+    <div class="container">
+        <div class="icon1">icon1</div>
+        <div class="icon2">icon2</div>
+        <div class="icon3">icon3</div>
+        <div class="icon4">icon4</div>
+    </div>
+
+    <div class="container">
+        <section class="icon1-data">section1</section>
+        <section class="icon2-data">section2</section>
+        <section class="icon3-data">section3</section>
+        <section class="icon4-data">section4</section>
+    </div>
+
+    <div class="container">
+        <ul>
+            <li>this is 1</li>
+            <li>this is 2</li>
+            <li>this is 3</li>
+            <li>this is 4</li>
+            <li>this is 5</li>
+            <li>this is 6</li>
+            <li>this is 7</li>
+            <li>this is 8</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <section>
+            <p>this is p</p>
+            <div>this is 1</div>
+            <div>this is 2</div>
+            <div>this is 3</div>
+        </section>
+    </div>
+
+    <div class="container">
+        <div class="box"> box </div>
+    </div>
+</body>
+
+</html>

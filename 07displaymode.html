@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        显示模式
+        
+        html元素
+            块元素
+                独占一行
+                可以指定高度 宽度，宽度默认是容器的100%
+                可以指定 padding margin
+                可以作为一个容器，内部可以放行内元素或块元素
+                
+                注意：
+                    文字类的元素内不能放块元素（p/h里不能有div）
+
+            行内元素
+                一行可以有多个
+                不能直接设置高度 宽度，宽度默认是内容的宽度
+                行内元素只能放行内元素
+
+                注意：
+                    a里面不能有再a
+                    a比较特殊，a里面可以放块元素，但是a转换成块模式更好
+
+            行内块元素 img input td
+                一行可以有多个，但是有缝隙
+                可以指定高度 宽度，宽度默认是内容的宽度
+                可以指定 padding margin
+
+        */
+
+        /* 转换块元素 */
+        a {
+            display: block;
+            height: 100px;
+        }
+
+        /* 转换行内元素 */
+        div {
+            display: inline;
+        }
+
+        /* 转换行内块元素 */
+        span {
+            display: inline-block;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- margin 只有宽度方向有效 -->
+    <!-- padding 很奇怪 -->
+    <!-- 尽量 只给 行内元素 设置 左右内外边距 -->
+    <!-- <a style="margin: 100px;padding: 100px;">aaa</a> -->
+
+    <a href="#">block</a>
+    <div>inline</div>
+    <div>inline</div>
+    <br>
+    <span>inline-block1</span><span>inline-block2</span>
+</body>
+
+</html>

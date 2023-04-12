@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        元素的显示和隐藏
+            display
+            visibility
+            overflow
+        */
+
+        .container {
+            margin-top: 10px;
+            border: 1px solid red;
+        }
+
+        .container div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        /* display
+            none    隐藏
+            block   显示
+        */
+        /* display:none 隐藏元素，位置也不在保留 */
+        #peiqi {
+            /* display: block; */
+            display: none;
+        }
+
+        /* visibility
+            inherit
+            visible 可见
+            collapse 隐藏表格行或列，隐藏的行或列能被其他内容使用；表格外的元素等同于 hidden
+            hidden  隐藏
+        */
+        /* visibility:hidden 隐藏元素，继续保留原来的位置 */
+        #pigfather {
+            visibility: hidden;
+        }
+
+        /* overflow 对溢出的元素的显示和隐藏
+            visible 显示
+            auto    在需要时显示滚动条
+            hidden  隐藏
+            scroll  总是滚动条
+        */
+        #paidaxin {
+            /* overflow: visible; */
+            overflow: auto;
+            /* overflow: hidden; */
+            /* overflow: scroll; */
+        }
+
+        /* 超出部分显示 ... */
+        /* 单行文本 */
+        #haimianbaobao {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 多行文本 */
+        /* 有兼容性效果 */
+        #zhangyuge {
+            white-space: normal;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="peiqi">peiqi</div>
+        <div id="qiaozhi">qiaozhi</div>
+    </div>
+
+    <div class="container">
+        <div id="pigfather">pigfather</div>
+        <div id="pigmother">pigmother</div>
+    </div>
+
+    <div class="container">
+        <div id="paidaxin">
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="haimianbaobao">
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="zhangyuge">
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </div>
+    </div>
+</body>
+
+</html>
