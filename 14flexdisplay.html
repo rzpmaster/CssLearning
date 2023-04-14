@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        Flex 布局 与 传统布局的区别
+            Flex 布局 
+                操作简单，布局极为简单，广泛用于移动端
+                PC兼容性较差
+
+            传统布局：（标准流+浮动+定位）
+                兼容性好
+                操作繁琐
+                不能在与移动端很好的布局
+
+        Flex 布局：给父容器设置 flex 布局，来控制子元素的位置
+
+        特点
+            任何一个容器都可以指定 flex 布局
+            当父盒子设置为 flex 布局后，子元素的 float/clear/vertical-align 属性失效
+            采用 flex 布局的元素成为 flex 容器，简称“容器”；它的所有子元素为容器成员，简称“项目”
+
+        容器的属性
+            flex-direction  设置主轴方向
+            justify-content 设置主轴上项目的排列方式
+            flex-wrap       设置项目是否换行
+            align-content   设置侧轴上的项目的排列方式(多行)
+            align-items     设置侧轴上的项目的排列方式(单行)
+            flex-flow       复合属性，相当于同时设置 flex-direction 和 flex-wrap
+
+        项目的属性
+            flex            控制项目占的份数(剩余空间)
+            align-self      控制项目自己在侧轴的排列方式
+            order           自定义子项的排列数序
+        */
+
+        /* 传统模式，span是行内元素，无法设置宽高 */
+        .container_old {
+            width: 80%;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .container_old span {
+            width: 150px;
+            height: 100px;
+            background-color: skyblue;
+            margin-right: 10px;
+        }
+
+        /* 设置 flex 布局，可以设置宽高 */
+        .container {
+            display: flex;
+            /* 平均分布剩余空间，可自适应*/
+            /* justify-content: space-around;  */
+            width: 80%;
+            height: 200px;
+            background-color: pink;
+            margin-top: 10px;
+        }
+
+        .container span {
+            width: 150px;
+            height: 100px;
+            background-color: skyblue;
+            margin-right: 10px;
+        }
+
+        /* 子元素不写宽度，写 flex:1 宽度铺满，可自适应*/
+        .container2 span {
+            /* 不写宽度，写 flex:1 宽度铺满，可自适应*/
+            /* width: 150px; */
+            flex: 1;
+            height: 100px;
+            background-color: skyblue;
+            margin-right: 10px;
+        }
+
+        /* 竖向排列 */
+        .container3 {
+            flex-direction: column;
+            height: 300px;
+        }
+
+        /* 父元素的属性 */
+        .container4 {
+            /* justify-content 主轴对齐 */
+            /* !!!使用 justify-content 之前，先确实谁是主轴!!! */
+            /* 左对齐 默认值 */
+            /* justify-content: flex-start; */
+            /* 右对齐 */
+            /* justify-content: flex-end; */
+            /* 居中 */
+            justify-content: center;
+            /* 平均分布剩余空间 */
+            /* justify-content: space-around; */
+            /* 左 中 右 */
+            /* justify-content: space-between; */
+
+            /* align-items 侧轴对齐 单行 */
+            align-items: center;
+        }
+
+        .container5 {
+            /* flex-wrap 是否换行 */
+            /* 不换行 默认值 放不下会修改项目的宽度 */
+            /* flex-wrap: nowrap; */
+            /* 换行 */
+            flex-wrap: wrap;
+            height: 400px;
+
+            /* align-content 侧轴对齐 多行 */
+            /* align-content: flex-start; */
+            /* align-content: center; */
+            align-content: space-between;
+        }
+
+        .container5 span {
+            width: 400px;
+            height: 100px;
+            background-color: skyblue;
+            margin-right: 10px;
+        }
+
+        /* 子项的属性 */
+        .container6 {
+            /* 3个子项都在下面 */
+            align-items: flex-end;
+        }
+
+        .container6 div {
+            /* 不写宽 */
+            /* width: ; */
+            height: 100px;
+            margin-right: 10px;
+            background-color: skyblue;
+        }
+
+        .container6 div:nth-child(1) {
+            flex: 1;
+            background-color: red;
+            /* 1号子项在上面 */
+            align-self: flex-start;
+        }
+
+        .container6 div:nth-child(2) {
+            flex: 2;
+            background-color: green;
+            /* 2号放在前面，默认是 0 */
+            order: -1;
+        }
+
+        .container6 div:nth-child(3) {
+            flex: 3;
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container_old">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container container2">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container container3">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container container4">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container container5">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+
+    <div class="container container6">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+    </div>
+</body>
+
+</html>

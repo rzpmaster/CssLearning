@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        rem 布局
+            页面元素随屏幕比例变化
+
+        rem(root em)是一个单位，类似于 em，em 是父元素的字体大小,而 rem 的基准是相对于 html 元素的字体大小
+        */
+
+        html {
+            font-size: 14px;
+        }
+
+        div {
+            font-size: 12px;
+        }
+
+        p {
+            /* 120px */
+            width: 10em;
+            /* 140px */
+            height: 10rem;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p></p>
+    </div>
+</body>
+
+</html>

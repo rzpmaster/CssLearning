@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        媒体查询
+        使用 @media 查询，可以针对不同屏幕尺寸设置不同样式
+        */
+
+        /* @media mediatype and/not/only (media feature) {
+            
+        } */
+
+        /* 
+        mediatype
+            all
+            print
+            screen
+
+        keyword
+            and
+            not
+            only
+
+        media feature
+            width
+            min-width <=
+            max-width >=
+        */
+
+        /* 一般按顺序写，css特性，后面的会覆盖前面的 */
+
+        /* 800<= width */
+        @media screen and (min-width:800px) {
+            body {
+                background-color: red;
+            }
+        }
+
+        /* 500 <= width <= 799  */
+        @media screen and (min-width:499px) and (max-width:800px) {
+            body {
+                background-color: pink;
+            }
+        }
+
+        /* 500 <= width */
+        @media screen and (max-width:500px) {
+            body {
+                background-color: purple;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

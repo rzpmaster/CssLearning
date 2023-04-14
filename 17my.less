@@ -1,0 +1,50 @@
+// 定义变量
+@color: pink;
+
+// 引用less文件
+@import "common.less";
+
+body {
+    background-color: @color;
+
+    // 嵌套
+    // .header div{
+
+    // }
+    .header {
+        width: 200px;
+        height: 200px;
+        background-color: deeppink;
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+
+            // 伪类
+            &:hover {
+                color: @color;
+            }
+
+            // 伪元素
+            &::before {
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-color: blue;
+            }
+        }
+    }
+
+
+    // 运算
+    //      支持加 + 减 - 乘 * 除 / 括号 ()
+    //      运算符左右要有空格
+    //      两个数运算，如果只有一个单位，就以这个单位为准
+    //      两个数运算，如果有两个单位，以第一个单位为准
+    @border: 5px + 5;
+
+    div {
+        border: @border solid @color;
+    }
+}
